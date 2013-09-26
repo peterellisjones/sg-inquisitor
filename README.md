@@ -40,13 +40,13 @@ If you allow access to an IP on any port, you must add this to the IP whitelist.
 
 ### Inquisit!
   
-Optionally define "public" security groups that can be accessed by 0.0.0.0/0 (ie, any [CIDR](http://en.wikipedia.org/wiki/CIDR) that isn't 32). You can also define whitelisted IPs (eg the office IP) that can access security groups.
+Optionally define "public" security groups that can be accessed by 0.0.0.0/0 (technically, any [CIDR](http://en.wikipedia.org/wiki/CIDR) that isn't 32). You can also define whitelisted IPs (eg the office IP) that can access security groups.
 
     require 'sg-inquisitor'
 
     public_security_groups = ["website", "landingpage"]
     whitelisted_ips = ["1.2.3.4"] # the office
-    
+
     sec_group_inquisitor.inquisit public_security_groups: public_security_groups, whitelisted_ips: whitelisted_ips
 
 The Inquisitor will make sure that unless a security group is whitelisted as "public", no IP range can accesses it, and only whitelisted specific IPs can access it.
