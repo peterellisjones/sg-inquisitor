@@ -46,4 +46,6 @@ Optionally define "public" security groups that can be accessed by 0.0.0.0/0 (ie
     whitelisted_ips = ["1.2.3.4"] # the office
     sec_group_inquisitor.inquisit public_security_groups: public_security_groups, whitelisted_ips: whitelisted_ips
 
+The Inquisitor will make sure that unless a security group is whitelisted as "public", no IP range can accesses it, and only whitelisted specific IPs can access it.
+
 _No security group expects The Security Group Inquisitor!_
