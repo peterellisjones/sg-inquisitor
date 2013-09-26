@@ -21,7 +21,6 @@ class SGInquisitor
   def inquisit options={}
     public_security_groups = options[:public_security_groups] || []
     whitelisted_ips = options[:whitelisted_ips] || []
-    whitelisted_ips.map { |ip| ip = ip }
 
     delete_count = 0
 
