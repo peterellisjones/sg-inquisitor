@@ -24,7 +24,7 @@ __Bad__
 __Good__ (IP must be whitelisted)
     ![](http://i.imgur.com/1u721mC.png)
     
-### No IPs
+### No non-whitelisted IPs
 If you allow access to an IP on any port, you must add this to the IP whitelist. Otherwise the permission gets deleted. This way when your office IP changes, you can re-run the inquisitor and make sure those old IP addresses get removed from your security groups.
 
 ## How to use The Security Group Inquisitor
