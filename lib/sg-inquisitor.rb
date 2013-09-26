@@ -15,7 +15,7 @@ class SGInquisitor
       :access_key_id => access_key,
       :secret_access_key => secret_access_key)
 
-    puts "The Inquisitor is Ready!" if @ec2
+    puts "The Inquisitor is Ready!" if @ec2 and @verbose
   end
 
   def inquisit options={}
@@ -28,29 +28,29 @@ class SGInquisitor
     # iterate through security groups
     @ec2.security_groups.each do |sg|
       next if sg.name == 'default'
-      puts "+ Carefully checking '#{sg.name}'..."
+      puts "+ Carefully checking '#{sg.name}'..." if @verbose
       sg.ingress_ip_permissions.each do |p|
         # iterate over ips
         p.ip_ranges.each do |ipc|
           ip, cidr = ipc.split('/')
           # check public security groups
           if cidr != "32" && !public_security_groups.include?(sg.name)
-            puts "- '#{sg.name}' allows traffic from #{ipc} and isn't whitelisted. Deleting this permission."
+            puts "- '#{sg.name}' allows traffic from #{ipc} and isn't whitelisted. Deleting this permission." if @verbose
             delete_count += 1 
             sg.revoke_ingress p.protocol, p.port_range, ipc
           elsif !whitelisted_ips.include? ip
-            puts "- '#{sg.name}' allows traffic from #{ipc} and isn't whitelisted. Deleting this permission."
+            puts "- '#{sg.name}' allows traffic from #{ipc} and isn't whitelisted. Deleting this permission." if @verbose
             sg.revoke_ingress p.protocol, p.port_range, ipc
           end      
         end
         # check port ranges
         if p.port_range.count != 1
-          puts "- '#{sg.name}' allows traffic from a range of ports, #{p.port_range}. Deleting this permission."
+          puts "- '#{sg.name}' allows traffic from a range of ports, #{p.port_range}. Deleting this permission." if @verbose
           delete_count += 1
           p.revoke
         end
       end
     end
-    puts "+ Finished the inquisition. #{delete_count} security group permission#{delete_count == 1 ? '' : 's'} deleted."
+    puts "+ Finished the inquisition. #{delete_count} security group permission#{delete_count == 1 ? '' : 's'} deleted." if @verbose
   end
 end
