@@ -3,7 +3,7 @@ require 'ipaddr'
 
 class SGInquisitor
 
-  def initialize options
+  def initialize options={}
     # defaults
     @verbose = options[:verbose].nil? ? true : options[:verbose]
 
@@ -19,7 +19,7 @@ class SGInquisitor
     puts "The Inquisitor is Ready!" if @ec2
   end
 
-  def inquisit options
+  def inquisit options={}
     public_security_groups = options[:public_security_groups] || []
     whitelisted_ips = options[:whitelisted_ips] || []
     whitelisted_ips.map { |ip| ip = ip }

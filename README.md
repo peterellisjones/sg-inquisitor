@@ -29,10 +29,21 @@ If you allow access to an IP on any port, you must add this to the IP whitelist.
 
 ## How to use The Security Group Inquisitor
 
-### Load the gem
+### Load the Gem
+
+    # Gemfile
+    gem 'sg-inquisitor', :git => 'git://github.com/ukoki/sg-inquisitor.git'
 
 ### Initialize with your AWS credentials
 
+    sec_group_inquisitor = SGInquisitor.new access_key: "AKIAABCDEFGHIJKLMNOP", secret_access_key: "abcdefghijklmnopqrstuvwxyz"
+
 ### Inquisit!
+  
+Optionally define "public" security groups that can be accessed by 0.0.0.0/0 (ie, any CIDR that isn't 32). You can also define whitelisted IPs (eg the office IP) that can access security groups.
+
+    public_security_groups = ["website", "landingpage"]
+    whitelisted_ips = ["1.2.3.4"] # the office
+    sec_group_inquisitor.inquisit public_security_groups: public_security_groups, whitelisted_ips: whitelisted_ips
 
 _No security group expects The Security Group Inquisitor!_
