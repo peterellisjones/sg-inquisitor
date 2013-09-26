@@ -16,7 +16,7 @@ __Good__
     
     
 ### No IP Ranges
-IP Ranges are dangerous. Unless security groups are whitelisted as public, The Inquisitor will delete any permissions allowing access on _0.0.0.0/0_
+IP Ranges are dangerous. Unless security groups are whitelisted as public, The Inquisitor will delete any permissions allowing access on IPs that are 0.0.0.0 or where the CIDR (the number after the slash in 1.2.3.4/32) isn't 32.
 
 __Bad__
     ![](http://i.imgur.com/D1RWt3Q.png)
