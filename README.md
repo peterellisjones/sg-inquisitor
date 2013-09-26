@@ -51,4 +51,6 @@ Optionally define "public" security groups that can be accessed by 0.0.0.0/0 (te
 
 The Inquisitor will make sure that unless a security group is whitelisted as "public", no IP range can accesses it, and only whitelisted specific IPs can access it.
 
+All deleted permissions are logged with `puts`.
+
 _No security group expects The Security Group Inquisitor!_
