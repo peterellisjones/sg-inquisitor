@@ -49,7 +49,7 @@ Optionally define "public" security groups that can be accessed by 0.0.0.0/0 (te
 
     sec_group_inquisitor.inquisit public_security_groups: public_security_groups, whitelisted_ips: whitelisted_ips
 
-The Inquisitor will make sure that unless a security group is whitelisted as "public", no IP range can accesses it, and only whitelisted specific IPs can access it.
+The Inquisitor will make sure that unless a security group is whitelisted as "public", no IP range can access it, and only whitelisted specific IPs can access it.
 
 All deleted permissions are logged with `puts`.
 
